@@ -1,18 +1,18 @@
 public class nodoSimple {
-    private libros libros;
-    private nodoSimple siguiente;
+    String Dato;
+    private NodoSimple siguiente;
 
-    public nodoSimple(libros libros) {
-        this.libros = libros;
+    public nodoSimple(Dato) {
+        this.Dato = Dato;
         this.siguiente = null;
     }
 
-    public libros getLibro() {
-        return libros;
+    public String getDato() {
+        return Dato;
     }
 
-    public void setLibro(libros libros) {
-        this.libros = libros;
+    public void setDato(Dato) {
+        this.Dato = Dato;
     }
 
     public nodoSimple getSiguiente() {
@@ -20,6 +20,10 @@ public class nodoSimple {
     }
 
     public void setSiguiente(nodoSimple siguiente) {
+        this.siguiente = siguiente;
+    }
+}
+) {
         this.siguiente = siguiente;
     }
 }
