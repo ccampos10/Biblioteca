@@ -7,15 +7,17 @@ import java.util.Stack;
 class Arbol {
     NodoListaDoble raiz = null;
 
-    public void anadirNodo(String nombre){
+    public boolean anadirNodo(String nombre){
+        if (buscarNodo(nombre) != null) return false;
         NodoListaDoble nuevo = new NodoListaDoble(nombre);
         if (raiz == null) {
             raiz = nuevo;
-            return;
+            return true;
         }
         NodoListaDoble padre= bfs();
         if (padre.getAnterior() == null) padre.setAnterior(nuevo);
         else padre.setSiguiente(nuevo);
+        return true;
     }
 
     public boolean editar(String nombre, String nombreAntiguo){
@@ -27,11 +29,11 @@ class Arbol {
 
     public boolean eliminar(String nombre){
         if (raiz.getDato().equals(nombre)){
-            if (raiz.tieneLibrosAsociados()) return false;
             NodoListaDoble iz = raiz.getAnterior();
             NodoListaDoble dr = raiz.getSiguiente();
             raiz = iz;
             NodoListaDoble padre= bfs();
+            if (padre == null) return true;
             if (padre.getAnterior() == null) padre.setAnterior(dr);
             else padre.setSiguiente(dr);
             return true;
@@ -42,7 +44,6 @@ class Arbol {
             NodoListaDoble nodo;
             if (nodoP.getAnterior().getDato().equals(nombre)) {
                 nodo = nodoP.getAnterior();
-                if (nodo.tieneLibrosAsociados()) return false;
                 NodoListaDoble iz = nodo.getAnterior();
                 NodoListaDoble dr = nodo.getSiguiente();
                 nodoP.setAnterior(iz);
@@ -53,7 +54,6 @@ class Arbol {
             }
             else {
                 nodo = nodoP.getSiguiente();
-                if (nodo.tieneLibrosAsociados()) return false;
                 NodoListaDoble iz = nodo.getAnterior();
                 NodoListaDoble dr = nodo.getSiguiente();
                 nodoP.setSiguiente(iz);
@@ -68,6 +68,7 @@ class Arbol {
     }
 
     public void mostrarDatos(){
+        if (raiz == null) System.out.println("La lista esta vacia");
         Stack<NodoListaDoble> cola = new Stack<>();
         cola.add(raiz);
         System.out.print("[ ");
@@ -92,6 +93,7 @@ class Arbol {
     private NodoListaDoble bfs(){
         NodoListaDoble menosProfundo = null;
         Queue<NodoListaDoble> cola = new LinkedList<>();
+        if (raiz == null) return null;
         cola.add(raiz);
         while (!cola.isEmpty()) {
             NodoListaDoble ac = cola.poll();

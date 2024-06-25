@@ -1,8 +1,10 @@
+package Libros;
+
 public class nodoSimple {
     String Dato;
-    private NodoSimple siguiente;
+    private nodoSimple siguiente;
 
-    public nodoSimple(Dato) {
+    public nodoSimple(String Dato) {
         this.Dato = Dato;
         this.siguiente = null;
     }
@@ -11,7 +13,7 @@ public class nodoSimple {
         return Dato;
     }
 
-    public void setDato(Dato) {
+    public void setDato(String Dato) {
         this.Dato = Dato;
     }
 
@@ -20,10 +22,6 @@ public class nodoSimple {
     }
 
     public void setSiguiente(nodoSimple siguiente) {
-        this.siguiente = siguiente;
-    }
-}
-) {
         this.siguiente = siguiente;
     }
 }

@@ -1,11 +1,11 @@
-package Categorias;
+package Autores;
 
-class NodoListaDoble {
+class NodoDoble {
     String dato;
-    NodoListaDoble siguiente;
-    NodoListaDoble anterior;
+    NodoDoble siguiente;
+    NodoDoble anterior;
 
-    public NodoListaDoble(String dato){
+    public NodoDoble(String dato){
         this.dato = dato;
         this.siguiente = null;
         this.anterior = null;
@@ -14,20 +14,20 @@ class NodoListaDoble {
     public String getDato(){
         return dato;
     }
-    public NodoListaDoble getSiguiente(){
+    public NodoDoble getSiguiente(){
         return siguiente;
     }
-    public NodoListaDoble getAnterior(){
+    public NodoDoble getAnterior(){
         return anterior;
     }
 
     public void setDato(String dato){
         this.dato = dato;
     }
-    public void setSiguiente(NodoListaDoble siguiente){
+    public void setSiguiente(NodoDoble siguiente){
         this.siguiente = siguiente;
     }
-    public void setAnterior(NodoListaDoble anterior){
+    public void setAnterior(NodoDoble anterior){
         this.anterior = anterior;
     }
 

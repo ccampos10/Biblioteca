@@ -1,16 +1,21 @@
+package Libros;
+
+import Categorias.Categorias;
+import Autores.Autores;
+
 public class Libros {
     private nodoSimple cabeza;
-    private Categoria categorias;
-    private Autor autores;
+    private Categorias categorias;
+    private Autores autores;
 
-    public Libros(Categoria categorias, Autor autores) {
+    public Libros(Categorias categorias, Autores autores) {
         this.categorias = categorias;
         this.autores = autores;
         this.cabeza = null;
     }
 
     public void crearLibro(String titulo, String categoria, String autor) {
-        if (categorias.existeCategoria(categoria) && autores.existeAutor(autor)) {
+        if (categorias.existe(categoria) && autores.existe(autor)) {
             nodoSimple nuevoLibro = new nodoSimple("Título: " + titulo + ", Categoría: " + categoria + ", Autor: " + autor);
             if (cabeza == null) {
                 cabeza = nuevoLibro;
@@ -28,7 +33,7 @@ public class Libros {
     }
 
     public void editarLibro(String titulo, String nuevoTitulo, String nuevaCategoria, String nuevoAutor) {
-        if (categorias.existeCategoria(nuevaCategoria) && autores.existeAutor(nuevoAutor)) {
+        if (categorias.existe(nuevaCategoria) && autores.existe(nuevoAutor)) {
             nodoSimple actual = cabeza;
             boolean encontrado = false;
 
@@ -97,6 +102,28 @@ public class Libros {
                 actual = actual.getSiguiente();
             }
         }
+    }
+    
+    public boolean estaAsociadoAutor(String nombreAutor) {
+        nodoSimple actual = cabeza;
+        while (actual != null) {
+            if (actual.getDato().contains("Autor: " + nombreAutor)) {
+                return true;
+            }
+            actual = actual.getSiguiente();
+        }
+        return false;
+    }
+    
+    public boolean estaAsociadoCategoria(String categoria) {
+        nodoSimple actual = cabeza;
+        while (actual != null) {
+            if (actual.getDato().contains("Categoría: " + categoria)) {
+                return true;
+            }
+            actual = actual.getSiguiente();
+        }
+        return false;
     }
 }
 
