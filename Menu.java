@@ -25,9 +25,9 @@ public class Menu {
             menuCategorias(scanner);
             break;
             
-            case 2:
-            menuAutores(scanner);
-            break;
+            // case 2:
+            // menuAutores(scanner);
+            // break;
 
             case 3:
             menuLibros(scanner);
@@ -89,27 +89,27 @@ public class Menu {
         }while (opcion !=5);
     }
 
-    private static void menuAutores(Scanner scanner){
-        int opcion;
-        do{
-            System.out.println("menu Autores:");
-            System.out.println("1. Crear Autor");
-            System.out.println("2. editar autor ");
-            System.out.println("3. eliminar autor ");
-            System.out.println("4. mostrar autores ");
-            System.out.println("5. Regresar al menu principal");
-            System.out.print("Seleccione una de las opciones ");
-            opcion = scanner.nextInt();
-            scanner.nextLine();
-            switch (opcion){
-                case 1:
-                    System.out.print("Ingrese el nombre del autor ");
-                    String nombreAutores = scanner.nextLine();
-                    Autor nuevoAutor = new 
+    // private static void menuAutores(Scanner scanner){
+    //     int opcion;
+    //     do{
+    //         System.out.println("menu Autores:");
+    //         System.out.println("1. Crear Autor");
+    //         System.out.println("2. editar autor ");
+    //         System.out.println("3. eliminar autor ");
+    //         System.out.println("4. mostrar autores ");
+    //         System.out.println("5. Regresar al menu principal");
+    //         System.out.print("Seleccione una de las opciones ");
+    //         opcion = scanner.nextInt();
+    //         scanner.nextLine();
+    //         switch (opcion){
+    //             case 1:
+    //                 System.out.print("Ingrese el nombre del autor ");
+    //                 String nombreAutores = scanner.nextLine();
+    //                 Autor nuevoAutor = new 
 
-                        }
-        }
-    }
+    //                     }
+    //     }
+    // }
 
     private static void menuLibros(Scanner scanner) {
         int opcion;

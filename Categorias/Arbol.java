@@ -8,12 +8,12 @@ class Arbol {
     NodoListaDoble raiz = null;
 
     public boolean anadirNodo(String nombre){
-        if (buscarNodo(nombre) != null) return false;
         NodoListaDoble nuevo = new NodoListaDoble(nombre);
         if (raiz == null) {
             raiz = nuevo;
             return true;
         }
+        if (buscarNodo(nombre) != null) return false;
         NodoListaDoble padre= bfs();
         if (padre.getAnterior() == null) padre.setAnterior(nuevo);
         else padre.setSiguiente(nuevo);
