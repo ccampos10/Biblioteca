@@ -1,20 +1,36 @@
 package Libros;
 
 public class nodoSimple {
-    String Dato;
+    String titulo;
+    String categoria;
+    String autor;
     private nodoSimple siguiente;
 
-    public nodoSimple(String Dato) {
-        this.Dato = Dato;
+    public nodoSimple(String titulo, String categoria, String autor) {
+        this.titulo = titulo;
+        this.categoria = categoria;
+        this.autor = autor;
         this.siguiente = null;
     }
 
-    public String getDato() {
-        return Dato;
+    public String getTitulo() {
+        return titulo;
+    }
+    public String getCategoria() {
+        return categoria;
+    }
+    public String getAutor() {
+        return autor;
     }
 
-    public void setDato(String Dato) {
-        this.Dato = Dato;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
     public nodoSimple getSiguiente() {

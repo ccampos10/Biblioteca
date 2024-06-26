@@ -2,13 +2,14 @@ import java.util.*;
 import Autores.Autores;
 import Categorias.*;
 import Libros.Libros;
-// import Prestamos.PrestamosLibros;
+import Prestamos.Prestamos;
 
 public class Menu {
     static Categorias categorias = new Categorias();
     static Autores autores = new Autores();
     static Libros libros = new Libros(categorias, autores);
     public static void main(String[] args){
+        Prestamos.setLibros(libros);
         Scanner scanner = new Scanner(System.in);
         int opcion;
         do{System.out.println("-------Menu--------");
@@ -25,17 +26,17 @@ public class Menu {
             menuCategorias(scanner);
             break;
             
-            // case 2:
-            // menuAutores(scanner);
-            // break;
+            case 2:
+            menuAutores(scanner);
+            break;
 
             case 3:
             menuLibros(scanner);
             break;
 
-            // case 4:
-            // Prestamos.PrestamosLibros(scanner);
-            // break;
+            case 4:
+            menuPrestamos(scanner);
+            break;
 
             case 5:
             System.out.println("programa finalizado....");
@@ -89,27 +90,47 @@ public class Menu {
         }while (opcion !=5);
     }
 
-    // private static void menuAutores(Scanner scanner){
-    //     int opcion;
-    //     do{
-    //         System.out.println("menu Autores:");
-    //         System.out.println("1. Crear Autor");
-    //         System.out.println("2. editar autor ");
-    //         System.out.println("3. eliminar autor ");
-    //         System.out.println("4. mostrar autores ");
-    //         System.out.println("5. Regresar al menu principal");
-    //         System.out.print("Seleccione una de las opciones ");
-    //         opcion = scanner.nextInt();
-    //         scanner.nextLine();
-    //         switch (opcion){
-    //             case 1:
-    //                 System.out.print("Ingrese el nombre del autor ");
-    //                 String nombreAutores = scanner.nextLine();
-    //                 Autor nuevoAutor = new 
+    private static void menuAutores(Scanner scanner){
+        int opcion2;
+        do {
+            System.out.println("Bienvenido al menu Autor");
+            System.out.println("1. Crear autor");
+            System.out.println("2. Editar autor");
+            System.out.println("3. Eliminar autor");
+            System.out.println("4. Mostrar lista completa de autores");
+            System.out.println("5. Salir del menu");
+            opcion2 = scanner.nextInt();
+            scanner.nextLine();
 
-    //                     }
-    //     }
-    // }
+            switch (opcion2) {
+                case 1:
+                    System.out.println("Ingrese el nombre del autor:");
+                    String nombreAutor = scanner.nextLine();
+                    autores.CrearAutor(nombreAutor);
+                    System.out.println("Autor creado exitosamente.");
+                    break;
+                case 2:
+                    System.out.println("Ingrese el nombre del autor que desea editar:");
+                    String nombreEditar = scanner.nextLine();
+                    System.out.println("Ingrese el nuevo nombre del autor:");
+                    String nuevoNombre = scanner.nextLine();
+                    autores.EditarAutor(nombreEditar, nuevoNombre);
+                    break;
+                case 3:
+                    System.out.print("Ingrese el nombre del autor a eliminar: ");
+                    String nombreEliminar = scanner.next();
+                    autores.EliminarAutor(nombreEliminar, libros);
+                    break;
+                case 4:
+                    autores.MostrarListaAutores();
+                    break;
+                case 5:
+                    System.out.println("Saliendo del menu autor");
+                default:
+                    System.out.println("Error. Ingrese una opcion valida");
+            }
+        } while (opcion2 != 5);
+    }
 
     private static void menuLibros(Scanner scanner) {
         int opcion;
@@ -184,5 +205,45 @@ public class Menu {
                     System.out.println("Opción no válida. Intente nuevamente.");
             }
         } while (opcion != 5);
+    }
+
+    private static void menuPrestamos(Scanner scanner){
+        int opcion;
+        do{
+            System.out.println("\nMenú de prestamos");
+            System.out.println("1. Mostrar libros prestados");
+            System.out.println("2. Mostrar libros disponibles");
+            System.out.println("3. Prestar un libro");
+            System.out.println("4. Devolver un libro");
+            System.out.println("5. Regresar al menu principal");
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine();
+            switch (opcion){
+                case 1:
+                    System.out.println("Libros prestados:");
+                    Prestamos.mostrarPrestamos();
+                    break;
+                case 2:
+                    System.out.println("Libros disponibles:");
+                    Prestamos.mostrarLibrosDisponibles();
+                    break;
+                case 3:
+                    System.out.println("Título del libro a prestar: ");
+                    String tituloPrestar = scanner.nextLine();
+                    Prestamos.prestarLibro(tituloPrestar);
+                    break;
+                case 4:
+                    System.out.print("Título del libro a devolver: ");
+                    String tituloDevolver = scanner.nextLine();
+                    Prestamos.devolverLibro(tituloDevolver);
+                    break;
+                case 5:
+                    System.out.println("Regresando al Menú Principal...");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente nuevamente.");
+            }
+        }while(opcion != 5);
     }
 }
